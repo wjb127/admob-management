@@ -1,180 +1,254 @@
 'use client';
 
 import { useState } from 'react';
-import { Settings, BarChart3, FileText, Globe, CheckCircle, AlertCircle } from 'lucide-react';
+import { ExternalLink, Clock, Brain, Smartphone, Mail, Phone, Globe, Download, Star, Users } from 'lucide-react';
 
-export default function AdMobDashboard() {
-  const [publisherId, setPublisherId] = useState('');
-  const [isConnected, setIsConnected] = useState(false);
+export default function GawolPortfolio() {
+  const [selectedApp, setSelectedApp] = useState<string | null>(null);
 
-  const handlePublisherIdSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (publisherId.startsWith('pub-') && publisherId.length > 10) {
-      setIsConnected(true);
-      // Here you would typically save to backend/database
-      localStorage.setItem('admob_publisher_id', publisherId);
+  const apps = [
+    {
+      id: 'life-timer',
+      name: 'Life Timer - Life Calculator',
+      subtitle: '남은 수명 계산기',
+      description: '통계 데이터를 기반으로 남은 생명 시간을 계산하여 매일 시간의 소중한 가치를 깨닫게 도와주는 동기부여 앱입니다.',
+      icon: '⏰',
+      status: '출시됨',
+      statusColor: 'bg-green-100 text-green-800',
+      playStoreUrl: 'https://play.google.com/store/apps/details?id=com.deathclock.lifetimerapp&pli=1',
+      features: [
+        '생년월일 기반 남은 시간 계산',
+        '년, 월, 일, 시, 분, 초 실시간 업데이트',
+        '공식 기대수명 통계 데이터 활용',
+        '매일 동기부여 명언 제공',
+        '다국어 지원'
+      ],
+      screenshots: [
+        '/screenshots/life-timer-1.jpg',
+        '/screenshots/life-timer-2.jpg',
+        '/screenshots/life-timer-3.jpg'
+      ],
+      category: 'Lifestyle',
+      lastUpdate: '2025년 6월 1일'
+    },
+    {
+      id: 'memory-gym',
+      name: '암기훈련소',
+      subtitle: '두뇌 훈련 플랫폼',
+      description: '효과적인 암기와 학습을 위한 스마트 훈련 시스템입니다. 과목별 퀴즈 관리와 반복 학습으로 기억력을 향상시킵니다.',
+      icon: '🧠',
+      status: '출시 준비중',
+      statusColor: 'bg-yellow-100 text-yellow-800',
+      playStoreUrl: '#',
+      features: [
+        '과목별 퀴즈 관리 시스템',
+        '스마트 반복 학습 알고리즘',
+        '학습 진도 추적',
+        '대량 퀴즈 업로드 지원',
+        '엑셀 파일 import 기능'
+      ],
+      screenshots: [
+        '/screenshots/memory-gym-1.jpg',
+        '/screenshots/memory-gym-2.jpg',
+        '/screenshots/memory-gym-3.jpg'
+      ],
+      category: 'Education',
+      lastUpdate: '개발 중'
     }
-  };
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            AdMob 관리 시스템
-          </h1>
-          <p className="text-lg text-gray-600">
-            Google AdMob 광고를 쉽게 관리하고 모니터링하세요
-          </p>
-        </header>
-
-        {/* Connection Status */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              {isConnected ? (
-                <CheckCircle className="text-green-500 w-6 h-6" />
-              ) : (
-                <AlertCircle className="text-yellow-500 w-6 h-6" />
-              )}
-              <h2 className="text-xl font-semibold">
-                AdMob 연결 상태
-              </h2>
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                가
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-gray-800">가월 (Gawol)</h1>
+                <p className="text-gray-600">모바일 앱 개발자</p>
+              </div>
             </div>
-            <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-              isConnected 
-                ? 'bg-green-100 text-green-800' 
-                : 'bg-yellow-100 text-yellow-800'
-            }`}>
-              {isConnected ? '연결됨' : '연결 필요'}
+            <div className="flex items-center space-x-4">
+              <a href="mailto:wjb127@naver.com" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+                <Mail className="w-5 h-5" />
+                <span className="hidden sm:inline">문의하기</span>
+              </a>
+              <a href="tel:+821050568463" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+                <Phone className="w-5 h-5" />
+                <span className="hidden sm:inline">연락처</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <section className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            혁신적인 모바일 앱으로<br />
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              일상을 더 의미있게
             </span>
-          </div>
-        </div>
-
-        {/* Publisher ID Setup */}
-        {!isConnected && (
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h3 className="text-lg font-semibold mb-4">AdMob Publisher ID 설정</h3>
-            <form onSubmit={handlePublisherIdSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="publisherId" className="block text-sm font-medium text-gray-700 mb-2">
-                  Publisher ID (pub-XXXXXXXXXXXXXXXX)
-                </label>
-                <input
-                  type="text"
-                  id="publisherId"
-                  value={publisherId}
-                  onChange={(e) => setPublisherId(e.target.value)}
-                  placeholder="pub-0000000000000000"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
-              >
-                연결하기
-              </button>
-            </form>
-          </div>
-        )}
-
-        {/* Feature Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <BarChart3 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">수익 분석</h3>
-            <p className="text-gray-600 text-sm">
-              실시간 광고 수익과 성과를 확인하세요
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <Settings className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">광고 설정</h3>
-            <p className="text-gray-600 text-sm">
-              광고 단위와 배치를 관리하세요
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <FileText className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">app-ads.txt</h3>
-            <p className="text-gray-600 text-sm">
-              app-ads.txt 파일이 자동으로 설정됩니다
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <Globe className="w-12 h-12 text-orange-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">도메인 연결</h3>
-            <p className="text-gray-600 text-sm">
-              Vercel을 통한 자동 배포 지원
-            </p>
-          </div>
-        </div>
-
-        {/* Setup Instructions */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h3 className="text-lg font-semibold mb-4">설정 가이드</h3>
-          <div className="space-y-4">
-            <div className="flex items-start space-x-3">
-              <div className="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-                1
-              </div>
-              <div>
-                <h4 className="font-medium">Google Play Console에서 웹사이트 등록</h4>
-                <p className="text-gray-600 text-sm">
-                  Play Console → 앱 → 스토어 설정 → 스토어 등록정보에서 웹사이트 URL을 등록하세요
-                </p>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            사용자의 삶에 실질적인 가치를 제공하는 앱을 개발합니다. 
+            시간 관리부터 학습 효율성까지, 더 나은 일상을 위한 디지털 솔루션을 만들어갑니다.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
+              <div className="flex items-center space-x-2">
+                <Smartphone className="w-5 h-5 text-blue-600" />
+                <span className="font-medium">모바일 앱 개발</span>
               </div>
             </div>
-
-            <div className="flex items-start space-x-3">
-              <div className="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-                2
-              </div>
-              <div>
-                <h4 className="font-medium">AdMob 계정 연결</h4>
-                <p className="text-gray-600 text-sm">
-                  AdMob 계정에서 Publisher ID를 확인하고 위에 입력하세요
-                </p>
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
+              <div className="flex items-center space-x-2">
+                <Globe className="w-5 h-5 text-green-600" />
+                <span className="font-medium">웹 개발</span>
               </div>
             </div>
-
-            <div className="flex items-start space-x-3">
-              <div className="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-                3
-              </div>
-              <div>
-                <h4 className="font-medium">app-ads.txt 자동 설정</h4>
-                <p className="text-gray-600 text-sm">
-                  이 사이트는 자동으로 app-ads.txt 파일을 제공합니다 (도메인/app-ads.txt)
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3">
-              <div className="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-                4
-              </div>
-              <div>
-                <h4 className="font-medium">Vercel 배포</h4>
-                <p className="text-gray-600 text-sm">
-                  GitHub에 푸시 후 Vercel에서 자동 배포하여 도메인을 얻으세요
-                </p>
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
+              <div className="flex items-center space-x-2">
+                <Brain className="w-5 h-5 text-purple-600" />
+                <span className="font-medium">UX/UI 디자인</span>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Footer */}
-        <footer className="text-center mt-12 text-gray-500">
-          <p>AdMob 관리 시스템 - Google AdMob과 연동하여 광고를 효율적으로 관리하세요</p>
-        </footer>
+        {/* Apps Section */}
+        <section className="mb-16">
+          <h3 className="text-3xl font-bold text-center mb-12">출시 앱 & 프로젝트</h3>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {apps.map((app) => (
+              <div key={app.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="text-4xl">{app.icon}</div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-800">{app.name}</h4>
+                        <p className="text-gray-600">{app.subtitle}</p>
+                      </div>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${app.statusColor}`}>
+                      {app.status}
+                    </span>
+                  </div>
+
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    {app.description}
+                  </p>
+
+                  <div className="mb-6">
+                    <h5 className="font-semibold text-gray-800 mb-3">주요 기능</h5>
+                    <ul className="space-y-2">
+                      {app.features.slice(0, 3).map((feature, index) => (
+                        <li key={index} className="flex items-center space-x-2 text-sm text-gray-600">
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="text-sm text-gray-500">
+                      <span className="font-medium">{app.category}</span> • {app.lastUpdate}
+                    </div>
+                    {app.playStoreUrl !== '#' ? (
+                      <a
+                        href={app.playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Play Store</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <div className="flex items-center space-x-2 bg-gray-100 text-gray-500 px-4 py-2 rounded-lg">
+                        <Clock className="w-4 h-4" />
+                        <span>출시 예정</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="bg-white rounded-xl shadow-lg p-8 mb-16">
+          <h3 className="text-2xl font-bold text-center mb-8">개발 현황</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">2</div>
+              <div className="text-gray-600">개발 프로젝트</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 mb-2">1</div>
+              <div className="text-gray-600">출시 앱</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">2</div>
+              <div className="text-gray-600">지원 언어</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+              <div className="text-gray-600">지속적 개발</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-white p-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">프로젝트 문의 & 협업</h3>
+          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            새로운 아이디어나 협업 제안이 있으시다면 언제든 연락주세요. 
+            함께 혁신적인 앱을 만들어보아요!
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="mailto:wjb127@naver.com"
+              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors flex items-center space-x-2"
+            >
+              <Mail className="w-5 h-5" />
+              <span>이메일 보내기</span>
+            </a>
+            <a
+              href="tel:+821050568463"
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-400 transition-colors flex items-center space-x-2"
+            >
+              <Phone className="w-5 h-5" />
+              <span>전화 문의</span>
+            </a>
+          </div>
+        </section>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <div className="mb-4">
+            <h4 className="text-xl font-bold mb-2">가월 (Gawol)</h4>
+            <p className="text-gray-400">모바일 앱 개발자</p>
+          </div>
+          <div className="text-sm text-gray-400 space-y-1">
+            <p>이메일: wjb127@naver.com | 전화: 010-5056-8463</p>
+            <p>주소: 답십리로1길 10 102동 2804호 동대문구, 서울특별시 02559</p>
+            <p className="mt-4">© 2025 가월. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
