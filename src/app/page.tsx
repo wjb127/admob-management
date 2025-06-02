@@ -29,6 +29,30 @@ export default function GawolPortfolio() {
       lastUpdate: '2025년 6월 1일'
     },
     {
+      id: 'habit-maker',
+      name: 'Habit Maker',
+      subtitle: '스마트 습관 관리 앱',
+      description: '작은 일상 습관이 큰 변화를 만듭니다. 최대 30개의 습관을 템플릿으로 관리하고, 직관적인 체크리스트와 아름다운 통계로 꾸준한 성장을 도와주는 스마트 습관 관리 앱입니다.',
+      icon: '✅',
+      status: '출시됨',
+      statusColor: 'bg-green-100 text-green-800',
+      playStoreUrl: 'https://play.google.com/store/apps/details?id=com.habitmaker.app',
+      features: [
+        '최대 30개 습관 템플릿 관리',
+        '카테고리별 습관 정리 (건강, 학습, 라이프스타일)',
+        '직관적인 일일 체크리스트',
+        '실시간 진행률 추적 및 시각화',
+        '일/주/월별 완료율 차트 및 성취 시스템'
+      ],
+      screenshots: [
+        '/screenshots/habit-maker-1.jpg',
+        '/screenshots/habit-maker-2.jpg',
+        '/screenshots/habit-maker-3.jpg'
+      ],
+      category: 'Productivity',
+      lastUpdate: '2025년 6월 1일'
+    },
+    {
       id: 'memory-gym',
       name: '암기훈련소',
       subtitle: '두뇌 훈련 플랫폼',
@@ -188,15 +212,15 @@ export default function GawolPortfolio() {
           <h3 className="text-2xl font-bold text-center mb-8">개발 현황</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">2</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">3</div>
               <div className="text-gray-600">개발 프로젝트</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">1</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">2</div>
               <div className="text-gray-600">출시 앱</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">2</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
               <div className="text-gray-600">지원 언어</div>
             </div>
             <div className="text-center">
