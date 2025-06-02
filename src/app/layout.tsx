@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   keywords: "가월, Gawol, 모바일 앱 개발, Life Timer, 암기훈련소, 앱 개발자, 포트폴리오, Android, iOS",
   authors: [{ name: "가월 (Gawol)" }],
   creator: "가월 (Gawol)",
+  verification: {
+    google: "Dvz2CoXHJX6FSMjBtcanS2XPgbeO2Z5mzGSssahoQLw",
+  },
   openGraph: {
     title: "가월 (Gawol) - 모바일 앱 개발자",
     description: "혁신적인 모바일 앱으로 일상을 더 의미있게 만드는 개발자",
@@ -38,6 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta name="google-site-verification" content="Dvz2CoXHJX6FSMjBtcanS2XPgbeO2Z5mzGSssahoQLw" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
