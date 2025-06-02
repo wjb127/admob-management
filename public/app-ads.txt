@@ -1,0 +1,9 @@
+# app-ads.txt for AdMob
+# This file should be placed at the root of your domain
+# Format: <advertising system domain>, <publisher ID>, <relationship>, <certification authority ID>
+
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Replace pub-0000000000000000 with your actual AdMob Publisher ID
+# You can find your Publisher ID in your AdMob account under Settings > Account Information
+# The format should be: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0 

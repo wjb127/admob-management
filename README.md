@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AdMob 관리 시스템
 
-## Getting Started
+Google AdMob 광고를 쉽게 관리하고 모니터링할 수 있는 Next.js 웹 애플리케이션입니다.
 
-First, run the development server:
+## 주요 기능
 
+- 🎯 **AdMob 연동**: Google AdMob Publisher ID를 통한 간편한 연결
+- 📊 **수익 분석**: 실시간 광고 수익과 성과 모니터링
+- ⚙️ **광고 설정**: 광고 단위와 배치 관리
+- 📄 **app-ads.txt 자동 설정**: Google Play Console 요구사항 자동 충족
+- 🌐 **Vercel 배포 지원**: 원클릭 배포로 즉시 사용 가능
+
+## 설정 가이드
+
+### 1. Google Play Console에서 웹사이트 등록
+- Play Console → 앱 → 스토어 설정 → 스토어 등록정보
+- 웹사이트 URL 필드에 배포된 도메인 입력
+
+### 2. AdMob 계정 연결
+- AdMob 계정에서 Publisher ID 확인 (pub-XXXXXXXXXXXXXXXX 형식)
+- 웹사이트에서 Publisher ID 입력하여 연결
+
+### 3. app-ads.txt 설정
+- 자동으로 `/app-ads.txt` 경로에서 파일 제공
+- Publisher ID 입력 시 자동으로 업데이트
+
+### 4. Vercel 배포
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# GitHub에 푸시
+git add .
+git commit -m "Initial commit"
+git push origin main
+
+# Vercel에서 프로젝트 연결 후 자동 배포
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 로컬 개발
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# 의존성 설치
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# 개발 서버 실행
+npm run dev
 
-## Learn More
+# 브라우저에서 http://localhost:3000 접속
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 기술 스택
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend**: Next.js 15, React 18, TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Forms**: React Hook Form + Zod
+- **Deployment**: Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 파일 구조
 
-## Deploy on Vercel
+```
+admob-manage/
+├── src/
+│   └── app/
+│       ├── app-ads.txt/
+│       │   └── route.ts          # app-ads.txt API 라우트
+│       ├── layout.tsx             # 레이아웃 컴포넌트
+│       └── page.tsx               # 메인 대시보드
+├── public/
+│   └── app-ads.txt                # app-ads.txt 파일
+└── README.md
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 환경 변수
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+필요한 경우 `.env.local` 파일에 다음 변수들을 설정하세요:
+
+```env
+# Google AdMob API (선택사항)
+GOOGLE_ADMOB_API_KEY=your_api_key_here
+
+# 기타 설정
+NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
+```
+
+## 배포
+
+### Vercel 배포 (권장)
+
+1. GitHub에 코드 푸시
+2. [Vercel](https://vercel.com)에서 프로젝트 연결
+3. 자동 배포 완료
+
+### 기타 플랫폼
+
+- **Netlify**: `npm run build` 후 `out` 폴더 배포
+- **AWS**: S3 + CloudFront 또는 Amplify 사용
+- **Google Cloud**: Cloud Run 또는 App Engine 사용
+
+## 라이선스
+
+MIT License
+
+## 지원
+
+문제가 있거나 기능 요청이 있으시면 GitHub Issues를 통해 알려주세요.
