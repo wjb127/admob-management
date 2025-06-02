@@ -1,11 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { ExternalLink, Clock, Brain, Smartphone, Mail, Phone, Globe, Download, Star, Users } from 'lucide-react';
+import { ExternalLink, Clock, Brain, Smartphone, Mail, Phone, Globe, Download } from 'lucide-react';
 
 export default function GawolPortfolio() {
-  const [selectedApp, setSelectedApp] = useState<string | null>(null);
-
   const apps = [
     {
       id: 'life-timer',
