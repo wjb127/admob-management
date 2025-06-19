@@ -30,19 +30,20 @@ export default function GawolPortfolio() {
     },
     {
       id: 'habit-maker',
-      name: 'Habit Maker',
-      subtitle: '스마트 습관 관리 앱',
-      description: '작은 일상 습관이 큰 변화를 만듭니다. 최대 30개의 습관을 템플릿으로 관리하고, 직관적인 체크리스트와 아름다운 통계로 꾸준한 성장을 도와주는 스마트 습관 관리 앱입니다.',
+      name: '습관메이커',
+      subtitle: '매일 반복할 습관 관리',
+      description: '매일 반복할 습관을 쉽게 관리하고 추적할 수 있는 앱입니다. 습관 템플릿 생성, 일일 체크, 진행률 확인, 상세한 통계 및 분석 기능을 제공하며, 완전한 오프라인 사용으로 개인정보를 보호합니다.',
       icon: '✅',
       status: '출시됨',
       statusColor: 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-black',
       playStoreUrl: 'https://play.google.com/store/apps/details?id=com.habitmaker.app',
+      appStoreUrl: 'https://apps.apple.com/kr/app/%EC%8A%B5%EA%B4%80%EB%A9%94%EC%9D%B4%EC%BB%A4/id6746741533',
       features: [
-        '최대 30개 습관 템플릿 관리',
-        '카테고리별 습관 정리 (건강, 학습, 라이프스타일)',
-        '직관적인 일일 체크리스트',
-        '실시간 진행률 추적 및 시각화',
-        '일/주/월별 완료율 차트 및 성취 시스템'
+        '습관 템플릿 생성 및 관리',
+        '일일 습관 체크 및 진행률 확인',
+        '상세한 통계 및 분석',
+        '매일 3회 알림 (오전 8시, 오후 1시, 오후 6시)',
+        '다국어 지원 (한국어, 영어, 일본어)'
       ],
       screenshots: [
         '/screenshots/habit-maker-1.jpg',
@@ -50,7 +51,7 @@ export default function GawolPortfolio() {
         '/screenshots/habit-maker-3.jpg'
       ],
       category: 'Productivity',
-      lastUpdate: '2025년 6월 1일'
+      lastUpdate: '2025년 1월'
     },
     {
       id: 'memory-gym',
@@ -206,21 +207,35 @@ export default function GawolPortfolio() {
                     </ul>
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col space-y-4">
                     <div className="text-gray-400">
                       <span className="font-semibold text-yellow-400">{app.category}</span> • {app.lastUpdate}
                     </div>
                     {app.playStoreUrl !== '#' ? (
-                      <a
-                        href={app.playStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-amber-600 text-black px-6 py-3 rounded-xl font-bold hover:from-yellow-500 hover:to-amber-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-500/30"
-                      >
-                        <Download className="w-5 h-5" />
-                        <span>Play Store</span>
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
+                      <div className="flex flex-wrap gap-3">
+                        <a
+                          href={app.playStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-amber-600 text-black px-6 py-3 rounded-xl font-bold hover:from-yellow-500 hover:to-amber-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-500/30"
+                        >
+                          <Download className="w-5 h-5" />
+                          <span>Play Store</span>
+                          <ExternalLink className="w-5 h-5" />
+                        </a>
+                        {app.appStoreUrl && (
+                          <a
+                            href={app.appStoreUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2 bg-gradient-to-r from-gray-600 to-gray-800 text-white px-6 py-3 rounded-xl font-bold hover:from-gray-700 hover:to-gray-900 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-gray-500/30"
+                          >
+                            <Download className="w-5 h-5" />
+                            <span>App Store</span>
+                            <ExternalLink className="w-5 h-5" />
+                          </a>
+                        )}
+                      </div>
                     ) : (
                       <div className="flex items-center space-x-2 bg-gradient-to-r from-amber-400/20 to-amber-600/20 text-amber-400 px-6 py-3 rounded-xl font-bold border border-amber-500/30">
                         <Clock className="w-5 h-5" />

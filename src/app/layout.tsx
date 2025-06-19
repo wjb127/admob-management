@@ -44,7 +44,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="Dvz2CoXHJX6FSMjBtcanS2XPgbeO2Z5mzGSssahoQLw" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning={true}>
         {children}
       </body>
     </html>
